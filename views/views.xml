@@ -79,7 +79,7 @@
       <field name="arch" type="xml">
         <form string="Películas">
           <header>
-            <button name='accion_boton' type='object' string='NO stock' />
+            <button name='accion_boton' type='object' string='0 stock' />
           </header>
           <sheet>
             <group>

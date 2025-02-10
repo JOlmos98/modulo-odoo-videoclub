@@ -49,7 +49,7 @@ class pelicula(models.Model):
     # establece la cantidad de películas a 0.
     def accion_boton(self):
         for record in self:
-            record.write({'cantidad':0})
+            record.write({'cantidad_disponible':0})
 
     # disponible se establece según la variable cantidad_disponible.
     @api.depends('cantidad_disponible')
