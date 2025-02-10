@@ -1,0 +1,136 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="my_module.list">
+      <field name="name">my_module list</field>
+      <field name="model">my_module.my_module</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="my_module.action_window">
+      <field name="name">my_module window</field>
+      <field name="res_model">my_module.my_module</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="my_module.action_server">
+      <field name="name">my_module server</field>
+      <field name="model_id" ref="model_my_module_my_module"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="my_module" id="my_module.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="my_module.menu_1" parent="my_module.menu_root"/>
+    <menuitem name="Menu 2" id="my_module.menu_2" parent="my_module.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="my_module.menu_1_list" parent="my_module.menu_1"
+              action="my_module.action_window"/>
+    <menuitem name="Server to list" id="my_module" parent="my_module.menu_2"
+              action="my_module.action_server"/>
+    -->
+
+    <!-- Vista de lista (tree) de películas -->
+    <record model="ir.ui.view" id="videoclub_pelicula_tree_view">
+      <field name="name">videoclub.pelicula.tree</field>
+      <field name="model">videoclub.pelicula</field>
+      <field name="arch" type="xml">
+        <tree string="Listado de Películas tree">
+          <field name="nombre" />
+          <field name="fecha_lanzamiento" />
+          <field name="genero_id" />
+          <field name="director_id" />
+          <field name="precio" />
+          <field name="cantidad_disponible" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista de formulario (form) de películas -->
+    <record model="ir.ui.view" id="videoclub_pelicula_form_view">
+      <field name="name">videoclub.pelicula.form</field>
+      <field name="model">videoclub.pelicula</field>
+      <field name="arch" type="xml">
+        <form string="Películas form">
+
+          <sheet>
+            <group>
+              <field name="nombre" />
+              <field name="fecha_lanzamiento" />
+              <field name="genero_id" widget="many2many_tags" />
+              <field name="director_id" />
+              <field name="duracion" />
+              <field name="precio" />
+              <field name="cantidad_disponible" />
+              <field name="disponible" readonly="1" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Vista de lista (tree) de géneros -->
+    <record model="ir.ui.view" id="videoclub_genero_tree_view">
+      <field name="name">videoclub.genero.tree</field>
+      <field name="model">videoclub.genero</field>
+      <field name="arch" type="xml">
+        <tree string="Listado de Géneros">
+          <field name="nombre" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Vista de formulario (form) de géneros -->
+    <record model="ir.ui.view" id="videoclub_genero_form_view">
+      <field name="name">videoclub.genero.form</field>
+      <field name="model">videoclub.genero</field>
+      <field name="arch" type="xml">
+        <form string="Género">
+          <sheet>
+            <group>
+              <field name="nombre" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Acción de ventana para películas -->
+    <record model="ir.actions.act_window" id="videoclub_pelicula_action">
+      <field name="name">Películas</field>
+      <field name="res_model">videoclub.pelicula</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú de navegación -->
+    <menuitem id="videoclub_menu" name="Videoclub" sequence="10" />
+    <menuitem id="peliculas_menu" name="Películas" parent="videoclub_menu" action="videoclub_pelicula_action" />
+  </data>
+</odoo>

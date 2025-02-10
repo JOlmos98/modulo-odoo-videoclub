@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Categoría del módulo -->
+    <record id="videoclub_categoria_modulo" model="ir.module.category">
+        <field name="name">Videoclub</field>
+        <field name="description">Módulo para gestionar el videoclub</field>
+        <field name="sequence">100</field>
+    </record>
+
+    <!-- Grupo de usuarios estándar -->
+    <record id="videoclub_users" model="res.groups">
+        <field name="name">Usuarios para consulta</field>
+        <field name="category_id" ref="videoclub_categoria_modulo"/>
+        <field name="comment">Usuarios con permisos limitados para consultar películas y directores</field>
+        <field name="users" eval="[(4, ref('base.group_user'))]" />
+    </record>
+
+    <!-- Grupo de administradores -->
+    <record id="videoclub_admin" model="res.groups">
+        <field name="name">Usuarios administradores</field>
+        <field name="category_id" ref="videoclub_categoria_modulo"/>
+        <field name="comment">Usuarios con permisos completos para gestionar el videoclub</field>
+        <field name="implied_ids" eval="[(4, ref('videoclub_users'))]" /> 
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+    </record>
+</odoo>

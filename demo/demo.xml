@@ -1,0 +1,113 @@
+<odoo>
+    <data>
+        <!--  -->
+        <!--   <record id="object0" model="my_module.my_module"> -->
+        <!--     <field name="name">Object 0</field> -->
+        <!--     <field name="value">0</field> -->
+        <!--   </record> -->
+        <!--  -->
+        <!--   <record id="object1" model="my_module.my_module"> -->
+        <!--     <field name="name">Object 1</field> -->
+        <!--     <field name="value">10</field> -->
+        <!--   </record> -->
+        <!--  -->
+        <!--   <record id="object2" model="my_module.my_module"> -->
+        <!--     <field name="name">Object 2</field> -->
+        <!--     <field name="value">20</field> -->
+        <!--   </record> -->
+        <!--  -->
+        <!--   <record id="object3" model="my_module.my_module"> -->
+        <!--     <field name="name">Object 3</field> -->
+        <!--     <field name="value">30</field> -->
+        <!--   </record> -->
+        <!--  -->
+        <!--   <record id="object4" model="my_module.my_module"> -->
+        <!--     <field name="name">Object 4</field> -->
+        <!--     <field name="value">40</field> -->
+        <!--   </record> -->
+        <!--  -->
+
+        <!-- Registros de géneros -->
+        <record id="genero0" model="videoclub.genero">
+            <field name="nombre">Acción</field>
+        </record>
+
+        <record id="genero1" model="videoclub.genero">
+            <field name="nombre">Terror</field>
+        </record>
+
+        <record id="genero2" model="videoclub.genero">
+            <field name="nombre">Comedia</field>
+        </record>
+
+        <record id="genero3" model="videoclub.genero">
+            <field name="nombre">Drama</field>
+        </record>
+
+        <!-- Registros de directores -->
+        <record id="director0" model="videoclub.director">
+            <field name="nombre">Pedro Almodóvar</field>
+        </record>
+
+        <record id="director1" model="videoclub.director">
+            <field name="nombre">Alfredo Castro</field>
+        </record>
+
+        <record id="director2" model="videoclub.director">
+            <field name="nombre">Alejandro Amenábar</field>
+        </record>
+
+        <record id="director3" model="videoclub.director">
+            <field name="nombre">Carlos Saura</field>
+        </record>
+
+        <!-- Registros de películas -->
+        <record id="pelicula0" model="videoclub.pelicula">
+            <field name="nombre">La Casa de Cartón</field>
+            <field name="fecha_lanzamiento">2017-05-02</field>
+            <field name="genero_id" ref="genero0" />
+            <field name="director_id" ref="director0" />
+            <field name="duracion">120</field>
+            <field name="precio">4.99</field>
+            <field name="cantidad_disponible">10</field>
+            <field name="caratula" type="base64" file="videoclub/static/imgs/caratula0.jpg" />
+            <field name="disponible">True</field>
+        </record>
+
+        <record id="pelicula1" model="videoclub.pelicula">
+            <field name="nombre">El Conjuro</field>
+            <field name="fecha_lanzamiento">2013-07-19</field>
+            <field name="genero_id" ref="genero1" />
+            <field name="director_id" ref="director1" />
+            <field name="duracion">130</field>
+            <field name="precio">5.99</field>
+            <field name="cantidad_disponible">5</field>
+            <field name="caratula" type="base64" file="videoclub/static/imgs/caratula1.jpg" />
+            <field name="disponible">True</field>
+        </record>
+
+        <record id="pelicula2" model="videoclub.pelicula">
+            <field name="nombre">Comedia Divina</field>
+            <field name="fecha_lanzamiento">2020-08-14</field>
+            <field name="genero_id" ref="genero2" />
+            <field name="director_id" ref="director2" />
+            <field name="duracion">100</field>
+            <field name="precio">3.99</field>
+            <field name="cantidad_disponible">15</field>
+            <field name="caratula" type="base64" file="videoclub/static/imgs/caratula2.jpg" />
+            <field name="disponible">False</field>
+        </record>
+
+        <record id="pelicula3" model="videoclub.pelicula">
+            <field name="nombre">La Caza</field>
+            <field name="fecha_lanzamiento">2012-05-05</field>
+            <field name="genero_id" ref="genero3" />
+            <field name="director_id" ref="director3" />
+            <field name="duracion">115</field>
+            <field name="precio">2.99</field>
+            <field name="cantidad_disponible">0</field>
+            <field name="caratula" type="base64" file="videoclub/static/imgs/caratula3.jpg" />
+            <field name="disponible">True</field>
+        </record>
+    </data>
+</odoo>
