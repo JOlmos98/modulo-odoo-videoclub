@@ -26,8 +26,8 @@ class director(models.Model):
     _name = 'videoclub.director'
     _description = 'videoclub.director'
 
-    nombre = fields.Char(string="Director", help="Nombre director",required=True)
-    peliculas_ids = fields.Many2many('videoclub.genero',ondelete='cascade',required=True,string='Peliculas')
+    nombre = fields.Char(string="Director", help="Director",required=True)
+    peliculas_ids = fields.Many2many('videoclub.pelicula',ondelete='cascade',required=True,string='Peliculas')
 
 class pelicula(models.Model):
     _name = 'videoclub.pelicula'
@@ -35,7 +35,7 @@ class pelicula(models.Model):
 
     nombre = fields.Char(string="Título", required=True)
     fecha_lanzamiento = fields.Date(string="Fecha de lanzamiento")
-    genero_id =  fields.Many2one(string='Genero',comodel_name='videoclub.genero',ondelete='set null',help='Genero')
+    genero_id =  fields.Many2one(string='Género',comodel_name='videoclub.genero',ondelete='set null',help='Género')
     director_id = fields.Many2one(string='Director',comodel_name='videoclub.director',ondelete='set null',help='Director')
     duracion = fields.Integer(string="Duracion")
     precio = fields.Float(string="Precio", help="Precio de alquiler de la película")

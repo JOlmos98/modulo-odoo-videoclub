@@ -51,52 +51,72 @@
     -->
     <!-- actions -->
     <!--
-    <menuitem name="List" id="my_module.menu_1_list" parent="my_module.menu_1"
-              action="my_module.action_window"/>
-    <menuitem name="Server to list" id="my_module" parent="my_module.menu_2"
-              action="my_module.action_server"/>
+    <menuitem name="List" id="my_module.menu_1_list" parent="my_module.menu_1" action="my_module.action_window"/>
+    <menuitem name="Server to list" id="my_module" parent="my_module.menu_2" action="my_module.action_server"/>
     -->
 
-    <!-- Vista de lista (tree) de películas -->
+    <!-- Vista de lista (Tree) de películas -->
     <record model="ir.ui.view" id="videoclub_pelicula_tree_view">
       <field name="name">videoclub.pelicula.tree</field>
       <field name="model">videoclub.pelicula</field>
       <field name="arch" type="xml">
-        <tree string="Listado de Películas tree">
+        <tree string="Listado de Películas" decoration-danger="disponible != True" decoration-success="disponible == True" decoration-warning="cantidad_disponible &lt; 5">
           <field name="nombre" />
           <field name="fecha_lanzamiento" />
-          <field name="genero_id" />
-          <field name="director_id" />
+          <field name="genero_id" string="Género" />
+          <field name="director_id" string="Director" />
           <field name="precio" />
           <field name="cantidad_disponible" />
+          <field name="disponible" />
         </tree>
       </field>
     </record>
 
-    <!-- Vista de formulario (form) de películas -->
+    <!-- Vista de formulario (Form) de películas -->
     <record model="ir.ui.view" id="videoclub_pelicula_form_view">
       <field name="name">videoclub.pelicula.form</field>
       <field name="model">videoclub.pelicula</field>
       <field name="arch" type="xml">
-        <form string="Películas form">
-
+        <form string="Películas">
+          <header>
+            <button name='accion_boton' type='object' string='NO stock' />
+          </header>
           <sheet>
             <group>
               <field name="nombre" />
               <field name="fecha_lanzamiento" />
-              <field name="genero_id" widget="many2many_tags" />
+              <field name="genero_id" />
               <field name="director_id" />
               <field name="duracion" />
               <field name="precio" />
               <field name="cantidad_disponible" />
               <field name="disponible" readonly="1" />
+              <field name='caratula' nolabel='1' widget='image' options="{' preview_image':' image_medium',' size':[200,200]}" />
             </group>
+
+            <notebook>
+              <page string="Más datos">
+                <group name="group_top">
+                  <group name="group_header" colspan="2">
+                    <field name="fecha_lanzamiento" class="oe_read_only" />
+                  </group>
+                  <group name="group_left">
+                    <field name="cantidad_disponible" />
+                    <field name="disponible" />
+                  </group>
+                  <group name="group_right">
+                    <field name="precio" widget="monetary" />
+                  </group>
+                </group>
+              </page>
+              <page string="Opiniones"></page>
+            </notebook>
           </sheet>
         </form>
       </field>
     </record>
 
-    <!-- Vista de lista (tree) de géneros -->
+    <!-- Vista de lista (Tree) de géneros -->
     <record model="ir.ui.view" id="videoclub_genero_tree_view">
       <field name="name">videoclub.genero.tree</field>
       <field name="model">videoclub.genero</field>
@@ -107,7 +127,7 @@
       </field>
     </record>
 
-    <!-- Vista de formulario (form) de géneros -->
+    <!-- Vista de formulario (Form) de géneros -->
     <record model="ir.ui.view" id="videoclub_genero_form_view">
       <field name="name">videoclub.genero.form</field>
       <field name="model">videoclub.genero</field>
@@ -132,5 +152,6 @@
     <!-- Menú de navegación -->
     <menuitem id="videoclub_menu" name="Videoclub" sequence="10" />
     <menuitem id="peliculas_menu" name="Películas" parent="videoclub_menu" action="videoclub_pelicula_action" />
+
   </data>
 </odoo>
